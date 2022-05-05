@@ -1,26 +1,34 @@
-﻿
-@(Html.Kendo().Grid<KendoQsBoilerplate.Invoice>()
-      .Name("grid")
-      .Columns(columns =>
-      {
-        columns.Bound(c => c.CustomerName);
-        columns.Bound(c => c.OrderDate);
-        columns.Bound(c => c.ProductName);
-        columns.Bound(c => c.UnitPrice);
-        columns.Bound(c => c.Quantity);
-        columns.Bound(c => c.Salesperson);
-      })
-      .ToolBar(toolbar => {
-            toolbar.Excel();
-            toolbar.Pdf();
-      })
-      .Pageable()
-      .Sortable(sortable => {
-          sortable.SortMode(GridSortMode.SingleColumn);
-      })
-      .Scrollable()
-      .DataSource(dataSource => dataSource
-          .Ajax()
-          .Read(read => read.Action("Invoices_Read", "Invoice"))
-      )
-)
+﻿@{Layout = null; }
+ @(Html.Kendo().Grid<KendoQsBoilerplate.Invoice>() // Kendo UI Grid Wrapper
+        // Name, also HTML elements "id" attribute
+        .Name("EmployeeSales")
+        // Grid column bindings
+        .Columns(columns =>
+        {
+            columns.Bound(c => c.CustomerName);
+            columns.Bound(c => c.OrderDate);
+            columns.Bound(c => c.ProductName);
+            columns.Bound(c => c.UnitPrice);
+            columns.Bound(c => c.Quantity);
+            columns.Bound(c => c.Salesperson);
+        })
+        // Toolbars
+        .ToolBar(toolbar => {
+                toolbar.Excel();
+                toolbar.Pdf();
+        })
+        // Enable Paging
+        .Pageable()
+        // Enable Sorting
+        .Sortable(sortable => {
+            sortable.SortMode(GridSortMode.SingleColumn);
+        })
+        // Disable Scrolling
+        .Scrollable(scrollable => scrollable.Enabled(false))
+        // Datasource configuration
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            // Read method action and controller
+            .Read(read => read.Action("Invoices_Read", "Invoice"))
+        )
+    )
