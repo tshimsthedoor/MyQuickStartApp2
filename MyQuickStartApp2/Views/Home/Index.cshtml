@@ -33,15 +33,18 @@
         <nav id="employee-list">
             <h3>Team members</h3>
             <!-- Employee List View -->
-            @(Html.Kendo().ListView<KendoQsBoilerplate.Employee>()//The listview data source will infer the Employee Model properties and their types
-                 .Name("EmployeesList") // Name is mandatory. It specifies the "id" attribute of the widget.
-                 .TagName("ul") // TagName is mandatory. It specifies the element which wraps all listview items.
-                 .ClientTemplateId("EmployeeItemTemplate") // The template is mandatory and will be used for rendering the listview items.
-                 .DataSource(dataSource => {
+            @(Html.Kendo().ListView<KendoQsBoilerplate.Employee>()
+    .Name("EmployeesList")
+    .ClientTemplateId("EmployeeItemTemplate")
+    .TagName("ul")
+    .DataSource(dataSource =>
+    {
         dataSource.Read(read => read.Action("EmployeesList_Read", "Home"));
+        dataSource.PageSize(9);
     })
     .Selectable(s => s.Mode(ListViewSelectionMode.Single))
-    )
+    .Events(e => e.DataBound("onListDataBound"))
+)
         </nav>
     </div>
     <!-- /Menu Panel -->
@@ -96,5 +99,10 @@
 @section Scripts {
     <script>
         //Custom Scripts
+        function onListDataBound(e) {
+            var listView = this;
+            var firstChild = listView.element.children().first();
+            listView.select(firstChild);
+        }
     </script>
 }
