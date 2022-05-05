@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyQuickStartApp2", "MyQuickStartApp2\MyQuickStartApp2.csproj", "{AE7D7145-1A6C-47AE-8364-290EA78FB5F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE7D7145-1A6C-47AE-8364-290EA78FB5F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE7D7145-1A6C-47AE-8364-290EA78FB5F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE7D7145-1A6C-47AE-8364-290EA78FB5F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE7D7145-1A6C-47AE-8364-290EA78FB5F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {22C6B2CC-AFF6-4D06-949C-8D0E2C10FF8E}
+	EndGlobalSection
+EndGlobal
