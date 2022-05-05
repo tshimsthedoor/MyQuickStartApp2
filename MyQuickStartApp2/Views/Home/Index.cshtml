@@ -43,8 +43,7 @@
         dataSource.PageSize(9);
     })
     .Selectable(s => s.Mode(ListViewSelectionMode.Single))
-    .Events(e => e.DataBound("onListDataBound"))
-)
+    .Events(e => e.DataBound("onListDataBound").Change("onCriteriaChange")))
         </nav>
     </div>
     <!-- /Menu Panel -->
@@ -53,9 +52,7 @@
         <article class="col-xs-12">
             <div id="employee-details" class="row">
                 <div id="employee-about" class="col-xs-12 col-lg-4">
-                    <!-- Employee Avatar -->
-                    @Html.Placehold(90, 90, "Face")
-                    <span>Full Name </span>
+                   
                 </div>
                 <div class="col-xs-12 col-lg-4">
                     <div class="chart-wrap">
@@ -94,6 +91,10 @@
         </div>
     </li>
 </script>
+<script type="text/x-kendo-tmpl" id="employeeAvatarTemplate">
+    <img src="@(Url.Content("~/content/employees/"))#:EmployeeId#.png" />
+    <span>#:FullName#</span>
+</script>
 <!-- /Kendo Templates -->
 
 @section Scripts {
@@ -103,6 +104,21 @@
             var listView = this;
             var firstChild = listView.element.children().first();
             listView.select(firstChild);
+        }
+        function getSelectedEmployee() {
+            var employeeList = $("#EmployeesList").data("kendoListView"),
+                employee = employeeList.dataSource.getByUid(employeeList.select().attr("data-uid"));
+            return employee;
+        }
+        function updateEmployeeAvatar() {
+            var employee = getSelectedEmployee(),
+                template = kendo.template($("#employeeAvatarTemplate").html());
+
+            //apply template
+            $("#employee-about").html(template(employee));
+        }
+        function onCriteriaChange() {
+            updateEmployeeAvatar();
         }
     </script>
 }
