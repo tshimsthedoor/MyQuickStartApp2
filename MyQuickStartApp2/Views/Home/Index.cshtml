@@ -33,26 +33,15 @@
         <nav id="employee-list">
             <h3>Team members</h3>
             <!-- Employee List View -->
-            <ul>
-                <li class="employee">
-                    <div>
-                        @Html.Placehold(30,30, "E")
-                        <span>Full Name</span>
-                    </div>
-                </li>
-                <li class="employee">
-                    <div>
-                        @Html.Placehold(30, 30, "E")
-                        <span>Full Name</span>
-                    </div>
-                </li>
-                <li class="employee">
-                    <div>
-                        @Html.Placehold(30, 30, "E")
-                        <span>Full Name</span>
-                    </div>
-                </li>
-            </ul>
+            @(Html.Kendo().ListView<KendoQsBoilerplate.Employee>()//The listview data source will infer the Employee Model properties and their types
+                 .Name("EmployeesList") // Name is mandatory. It specifies the "id" attribute of the widget.
+                 .TagName("ul") // TagName is mandatory. It specifies the element which wraps all listview items.
+                 .ClientTemplateId("EmployeeItemTemplate") // The template is mandatory and will be used for rendering the listview items.
+                 .DataSource(dataSource => {
+        dataSource.Read(read => read.Action("EmployeesList_Read", "Home"));
+    })
+    .Selectable(s => s.Mode(ListViewSelectionMode.Single))
+    )
         </nav>
     </div>
     <!-- /Menu Panel -->
