@@ -1,4 +1,4 @@
-﻿@{Layout = null; }
+﻿@{Layout = null;}
  @(Html.Kendo().Grid<KendoQsBoilerplate.Invoice>() // Kendo UI Grid Wrapper
         // Name, also HTML elements "id" attribute
         .Name("EmployeeSales")
@@ -6,7 +6,7 @@
         .Columns(columns =>
         {
             columns.Bound(c => c.CustomerName);
-            columns.Bound(c => c.OrderDate);
+            columns.Bound(c => c.OrderDate).Format("{0:dd/MM/yyyy}");
             columns.Bound(c => c.ProductName);
             columns.Bound(c => c.UnitPrice);
             columns.Bound(c => c.Quantity);
