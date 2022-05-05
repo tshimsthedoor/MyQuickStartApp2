@@ -17,7 +17,10 @@
         <p>@Html.Label("Stats from")</p>
         <p>
             <!-- Stats From Date Picker -->
-            @Html.TextBox("StatsFrom", new DateTime(1996, 1, 1))
+            
+            @(Html.Kendo().DatePicker()
+                  .Name("StatsFrom")
+                  .Value(new DateTime(1997, 1, 1)))
         </p>
         <p>@Html.Label("Stats to")</p>
         <p>
