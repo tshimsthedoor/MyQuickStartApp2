@@ -83,6 +83,14 @@
 </div>
 
 <!-- Kendo Templates -->
+<script type="text/x-kendo-tmpl" id="EmployeeItemTemplate">
+    <li class="employee">
+        <div>
+            <img src="@(Url.Content("~/content/employees/"))#:EmployeeId#-t.png" />
+            <span> #: FullName #</span>
+        </div>
+    </li>
+</script>
 <!-- /Kendo Templates -->
 
 @section Scripts {
