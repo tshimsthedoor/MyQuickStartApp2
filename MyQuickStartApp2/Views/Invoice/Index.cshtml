@@ -29,6 +29,8 @@
         .DataSource(dataSource => dataSource
             .Ajax()
             // Read method action and controller
-            .Read(read => read.Action("Invoices_Read", "Invoice"))
+            .Read(read => read.Action("Invoices_Read", "Invoice")
+            .Data("getEmployeeFilter"))
         )
+        .AutoBind(false)
     )
